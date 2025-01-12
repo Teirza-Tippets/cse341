@@ -3,9 +3,9 @@ const nameRoute = require('./routes/nameRoute');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use('/name', nameRoute);
+app.use('/', nameRoute);
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.send('Hello! This is the home route.');
 });
 
