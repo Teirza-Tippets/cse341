@@ -97,7 +97,7 @@ router.put('/:id', validateContact, async (req, res) => {
       return res.status(404).json({ message: 'Contact not found' });
     }
 
-    res.status(200).json({ message: 'Contact updated successfully.' });
+    res.status(204).json({ message: 'Contact updated successfully.' });
   } catch (error) {
     console.error('Error updating contact:', error);
     res.status(500).json({ message: 'Failed to update contact' });
