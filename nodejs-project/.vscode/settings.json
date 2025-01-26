@@ -1,0 +1,15 @@
+{
+  // Use Prettier as the default formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Enable format on save
+  "editor.formatOnSave": true,
+
+  // Enable ESLint to fix issues on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Validate specific file types with ESLint
+  "eslint.validate": ["javascript", "json", "yaml"]
+}
