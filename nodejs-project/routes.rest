@@ -26,7 +26,7 @@ PUT http://localhost:3000/contacts/678c7037be89513bea8538e4
 Content-Type: application/json
 
 {
-  "firstName": "Kaylee",
+  "firstName": "Kaylee-Ann",
   "lastName": "Foster",
   "email": "Kaylee@example.com",
   "favoriteColor": "Dark green",
@@ -34,5 +34,5 @@ Content-Type: application/json
 }
 
 ### DELETE Request to remove a contact
-DELETE http://localhost:3000/contacts/<id>
+DELETE http://localhost:3000/contacts/67959c76ae2952c455ce47ef
 
