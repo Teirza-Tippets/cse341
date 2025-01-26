@@ -1,0 +1,38 @@
+<!-- REST CLIENTS FOR CHECKING -->
+
+### Get all contacts
+GET http://localhost:3000/contacts
+
+###
+
+### Get a single contact by ID
+GET http://localhost:3000/contacts/678c7037be89513bea8538e2
+
+### POST a new contact to the list
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Teirza",
+  "lastName": "Tippets",
+  "email": "Teirza@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "2004-04-02"
+}
+
+
+### PUT Request to update a contact
+PUT http://localhost:3000/contacts/678c7037be89513bea8538e4
+Content-Type: application/json
+
+{
+  "firstName": "Kaylee",
+  "lastName": "Foster",
+  "email": "Kaylee@example.com",
+  "favoriteColor": "Dark green",
+  "birthday": "2006-09-03"
+}
+
+### DELETE Request to remove a contact
+DELETE http://localhost:3000/contacts/<id>
+
