@@ -1,8 +1,12 @@
 const express = require('express');
 const nameRoute = require('./routes/nameRoute');
 const contactsRoute = require('./routes/contacts');
+const cors = require('cors');
+const setupSwagger = require('./swagger');
 const app = express();
+setupSwagger(app);
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 // week 01 code :)
 app.use('/', nameRoute);
