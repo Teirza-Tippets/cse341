@@ -1,27 +1,13 @@
-const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const fs = require('fs');
+const path = require('path');
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'API Documentation',
-      version: '1.0.0',
-      description: 'API documentation for your Express app'
-    },
-    servers: [
-      {
-        url: 'https://cse341-by24.onrender.com' // Replace with your Render URL
-      }
-    ]
-  },
-  apis: ['/routes/contacts.js'] // Adjust path to where your route files are stored
-};
-
-const swaggerSpec = swaggerJsdoc(options);
+// Load Swagger JSON file
+const swaggerFile = path.join(__dirname, 'swagger.json');
+const swaggerData = JSON.parse(fs.readFileSync(swaggerFile, 'utf8'));
 
 const setupSwagger = (app) => {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerData));
 };
 
 module.exports = setupSwagger;
