@@ -1,0 +1,36 @@
+### Get all movies
+GET http://localhost:3000/movies
+
+###
+
+### Get a single movie by ID
+GET http://localhost:3000/movies/67b0dfb3a78cd66f31f37760
+
+### POST a new movie
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "genre": "Sci-Fi",
+  "releaseYear": 2010,
+  "rating": 8.8,
+  "watched": false
+}
+
+### PUT Request to update a movie
+PUT http://localhost:3000/movies/67b0dfb3a78cd66f31f37765
+Content-Type: application/json
+
+{
+    "title": "My Hero Academia: Two Heroes",
+    "director": "Kenji Nagasaki",
+    "genre": "Action/Adventure",
+    "releaseYear": 2019,
+    "rating": 9.5,
+    "watched": true
+  }
+
+### DELETE Request to remove a movie
+DELETE http://localhost:3000/movies/<id>
