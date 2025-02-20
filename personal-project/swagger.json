@@ -9,6 +9,10 @@
       {
         "url": "http://localhost:3000",
         "description": "Local server"
+      },
+      {
+        "url":"https://cse341-by24.onrender.com",
+        "description": "Production Server"
       }
     ],
     "paths": {
