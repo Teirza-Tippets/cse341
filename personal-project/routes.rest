@@ -24,7 +24,7 @@ PUT http://localhost:3000/movies/67b0dfb3a78cd66f31f37765
 Content-Type: application/json
 
 {
-    "title": "My Hero Academia: Two Heroes",
+    "title": "My Hero Academia: Heroes Rising",
     "director": "Kenji Nagasaki",
     "genre": "Action/Adventure",
     "releaseYear": 2019,

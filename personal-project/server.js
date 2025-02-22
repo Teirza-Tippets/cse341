@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const movieRoutes = require("./routes/movies");
 const setupSwagger = require('./swagger');
+const path = require('path');
 
 dotenv.config();
 
@@ -29,9 +30,22 @@ MongoClient.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true
 // Use movie routes
 app.use("/movies", movieRoutes);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/movies', async (req, res) => {
+  try {
+      const movies = await DB_NAME.find();
+      res.json(movies);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+});
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
+  console.log(`Frontend is running on http://localhost:${PORT}`)
   console.log(`Server is running on http://localhost:${PORT}/movies`);
   console.log(`Swagger docs available at http://localhost:${PORT}/api-docs`);
 });
