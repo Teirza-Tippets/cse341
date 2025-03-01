@@ -2,7 +2,6 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { auth, requiresAuth } = require("express-openid-connect");
 const movieRoutes = require("./routes/movies");
 const setupSwagger = require("./swagger");
 const path = require("path");
