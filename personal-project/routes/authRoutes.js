@@ -3,37 +3,28 @@ const passport = require("passport");
 
 const router = express.Router();
 
-// Google OAuth Login
-router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-// Google OAuth Callback
+// Start Google login
 router.get(
-  "/google/callback",
-  passport.authenticate("google", { failureRedirect: "/" }),
-  (req, res) => {
-    res.redirect("/dashboard"); // Redirect to dashboard on success
-  }
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-// Logout
+// Google OAuth callback
+router.get(
+    "/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    (req, res) => {
+      res.redirect("/dashboard"); // Redirect to dashboard after login
+    }
+  );
+  
+
+// Logout route
 router.get("/logout", (req, res) => {
   req.logout(() => {
-    req.session.destroy();
-    res.redirect("/");
+    res.redirect("/login");
   });
 });
 
-// Protected Route
-const isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.status(401).json({ message: "Unauthorized" });
-};
-
-// Example Protected Route
-router.get("/dashboard", isAuthenticated, (req, res) => {
-  res.json({ message: "Welcome to your dashboard!", user: req.user });
-});
-
 module.exports = router;
+

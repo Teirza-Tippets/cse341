@@ -1,9 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const User = require("../models/User"); // Create this model if not present
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 passport.use(
   new GoogleStrategy(
@@ -12,32 +9,24 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
     },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        let user = await User.findOne({ googleId: profile.id });
+    (accessToken, refreshToken, profile, done) => {
+      // Here you can handle user data from Google
+      const user = {
+        googleId: profile.id,
+        name: profile.displayName,
+        email: profile.emails?.[0]?.value,
+        photo: profile.photos?.[0]?.value,
+      };
 
-        if (!user) {
-          user = new User({
-            googleId: profile.id,
-            name: profile.displayName,
-            email: profile.emails[0].value,
-          });
-          await user.save();
-        }
-
-        return done(null, user);
-      } catch (err) {
-        return done(err, null);
-      }
+      return done(null, user); // No database for now, just return user
     }
   )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(async (id, done) => {
-  const user = await User.findById(id);
-  done(null, user);
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
 });

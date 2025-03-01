@@ -4,10 +4,50 @@ body {
     font-family: "Merriweather", sans-serif;
     margin: 0;
 }
+
+/* Google Login button in the header */
+#googleLogin {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: #3c6e71; /* Google's blue */
+    color: #fff;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none; /* removes underline if it's a link */
+  }
+
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+  
 header, footer{
     padding: 20px;
     background-color: #3c6e71;
     color: white;
+}
+
+nav{
+    background-color: #3c6e71;
+    padding: 20px;
+}
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav a:hover{
+    background-color: #284b63;
+    opacity: 50%;
 }
 
 #movies-container {
@@ -21,5 +61,13 @@ header, footer{
     width: 200px;
     text-align: center;
     background-color: #f9f9f9;
+    color: #284b63;
+}
+
+main a{
+    background-color: #f9f9f9;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
     color: #284b63;
 }
